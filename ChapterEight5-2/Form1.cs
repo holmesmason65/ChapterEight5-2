@@ -1,4 +1,9 @@
-﻿using System;
+﻿/* Mason Holmes 
+ * 7/21/2021
+ * This program provides a GUI for retrieving data from a database. 
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
