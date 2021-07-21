@@ -53,6 +53,7 @@ namespace ChapterEight5_2
             this.btnNext.TabIndex = 0;
             this.btnNext.Text = "Next=>";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnPrevious
             // 
@@ -62,6 +63,7 @@ namespace ChapterEight5_2
             this.btnPrevious.TabIndex = 1;
             this.btnPrevious.Text = "<=Previous";
             this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
             // btnCancle
             // 
@@ -80,6 +82,7 @@ namespace ChapterEight5_2
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnEdit
             // 
@@ -107,6 +110,7 @@ namespace ChapterEight5_2
             this.btnDelete.TabIndex = 6;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnDone
             // 
@@ -186,6 +190,7 @@ namespace ChapterEight5_2
             this.Controls.Add(this.btnNext);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
