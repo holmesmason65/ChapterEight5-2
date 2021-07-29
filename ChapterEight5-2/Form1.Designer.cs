@@ -57,9 +57,9 @@ namespace ChapterEight5_2
             // 
             // btnPrevious
             // 
-            this.btnPrevious.Location = new System.Drawing.Point(130, 150);
+            this.btnPrevious.Location = new System.Drawing.Point(113, 150);
             this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Size = new System.Drawing.Size(75, 23);
+            this.btnPrevious.Size = new System.Drawing.Size(92, 23);
             this.btnPrevious.TabIndex = 1;
             this.btnPrevious.Text = "<=Previous";
             this.btnPrevious.UseVisualStyleBackColor = true;
@@ -73,6 +73,7 @@ namespace ChapterEight5_2
             this.btnCancle.TabIndex = 2;
             this.btnCancle.Text = "Cancel";
             this.btnCancle.UseVisualStyleBackColor = true;
+            this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
             // 
             // btnSave
             // 
@@ -92,6 +93,7 @@ namespace ChapterEight5_2
             this.btnEdit.TabIndex = 4;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAddNed
             // 
@@ -101,6 +103,7 @@ namespace ChapterEight5_2
             this.btnAddNed.TabIndex = 5;
             this.btnAddNed.Text = "Add New";
             this.btnAddNed.UseVisualStyleBackColor = true;
+            this.btnAddNed.Click += new System.EventHandler(this.btnAddNed_Click);
             // 
             // btnDelete
             // 

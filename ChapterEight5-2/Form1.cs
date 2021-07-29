@@ -1,6 +1,6 @@
-﻿/* Mason Holmes 
- * 7/21/2021
- * This program provides a GUI for retrieving data from a database. 
+﻿/* Mason Holmes
+ * 7/28/21
+ * This program provides a GUI for viewing the contents of a database while also providing states for adding and editing its contents. 
  */
 
 using System;
@@ -50,9 +50,14 @@ namespace ChapterEight5_2
             txtAuthorID.DataBindings.Add("Text", authorsTable, "Au_ID");
             txtAuthorName.DataBindings.Add("Text", authorsTable, "Author");
             txtYearBorn.DataBindings.Add("Text", authorsTable, "Year_Born");
+            
 
             // establish currency manager
             authorsManager = (CurrencyManager)this.BindingContext[authorsTable];
+
+            // page 5-40
+            this.Show(); 
+            SetState("View");
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -68,17 +73,26 @@ namespace ChapterEight5_2
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            authorsManager.Position--; 
+            if (authorsManager.Position == 0) 
+            {
+                Console.Beep();
+            }
+            authorsManager.Position--;
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
+            if (authorsManager.Position == authorsManager.Count - 1)
+            {
+                Console.Beep();
+            }
             authorsManager.Position++; 
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Record saved.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+            MessageBox.Show("Record saved.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            SetState("View");
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -90,6 +104,57 @@ namespace ChapterEight5_2
             {
                 return;
             }
+        }
+        
+        private void SetState(string appState) 
+        {
+            switch (appState) 
+            {
+                case "View":
+                    txtAuthorID.BackColor = Color.White;
+                    txtAuthorID.ForeColor = Color.Black;
+                    txtAuthorName.ReadOnly = true;
+                    txtYearBorn.ReadOnly = true;
+                    btnPrevious.Enabled = true;
+                    btnAddNed.Enabled = true; // typo btnAddNed -> btnAddNew
+                    btnSave.Enabled = false;
+                    btnCancle.Enabled = false;
+                    btnEdit.Enabled = true;
+                    btnDelete.Enabled = true;
+                    btnDone.Enabled = true;
+                    txtAuthorName.Focus(); 
+                    break;
+                default: // Add or Edit if not in view 
+                    txtAuthorID.BackColor = Color.Red;
+                    txtAuthorID.ForeColor = Color.White;
+                    txtAuthorName.ReadOnly = false;
+                    txtYearBorn.ReadOnly = false;
+                    btnPrevious.Enabled = false;
+                    btnAddNed.Enabled = false; // typo btnAddNed -> btnAddNew
+                    btnSave.Enabled = true;
+                    btnCancle.Enabled = true;
+                    btnEdit.Enabled = false;
+                    btnDelete.Enabled = false;
+                    btnDone.Enabled = false;
+                    txtAuthorName.Focus();
+                    break;
+            }
+
+        }
+
+        private void btnAddNed_Click(object sender, EventArgs e)
+        {
+            SetState("Add");
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            SetState("Edit");
+        }
+
+        private void btnCancle_Click(object sender, EventArgs e)
+        {
+            SetState("View");
         }
     }
 }
